@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Document</title>
+    <!-- firebase-->
+
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+ 
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <title>Choo choo!</title>
 </head>
 <body>
         <div class="jumbotron jumbotron-fluid">
@@ -15,7 +21,8 @@
                 </div>
         </div>
 
-        <ul class="list-group">
+        <!-- append train info here -->
+        <ul class="list-group" id = "list-group">
                 <li id="list-group-item active">Add new train</li>
                 <li id="list-group-item"></li>
                 <li id="list-group-item"></li>
@@ -25,21 +32,21 @@
 
               <form>
                     <div class="form-group">
-                      <label for="train-name">Train</label>
-                      <input type="email" class="form-control" id="train-name" aria-describedby="trainHelp" placeholder="Enter train">
+                      <label for="train-input">Train</label>
+                      <input type="train-name" class="train-name" id="train-input" aria-describedby="trainHelp" placeholder="Enter train">
                       <small id="trainHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                       <label for="destination">Destination</label>
-                      <input type="destination" class="form-control" id="destinationAdded" placeholder="add-destination">
+                      <input type="destination" class="form-control" id="destination" placeholder="add-destination">
                     </div>
                     <div class="form-group">
-                        <label for="firstTrainTime1">First train time (HH:mm - military time)</label>
-                        <input type="first-train-time" class="form-control" id="firstTrainTime" placeholder="first-train-time">
+                        <label for="first-traintime">First train time (HH:mm - military time)</label>
+                        <input type="first-train-time" class="form-control" id="first-traintime" placeholder="first-train-time">
                     </div>
                     <div class="form-group">
-                        <label for="frequencyMin">Frequency (min)</label>
-                        <input type="frequency" class="form-control" id="frequencyMin" placeholder="frequency">
+                        <label for="frequency-min">Frequency (min)</label>
+                        <input type="frequency" class="form-control" id="frequency-min" placeholder="frequency">
                     </div>
                 
                     <button type="submit" class="btn btn-primary">Submit</button>
