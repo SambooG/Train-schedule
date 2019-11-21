@@ -1,28 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const startTime = moment('November, 20, 2019 10:52');
+const currentTime = moment();
+let nextTrainTime = ""
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -38,14 +16,15 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  var dataRef =firebase.database();
-
-//   intial values
-let train = ''
-let destination = ''
-let firstTrainTime = ''
-let frequency = ''
-
+  var dataRef = firebase.database();
+  
+  
+  //   intial values
+  let train = ''
+  let destination = ''
+  let firstTrainTime = ''
+  let frequency = ''
+  
 // capture button click 
 $("#add-train").on("click", function (event){
     event.preventDefault();
@@ -53,22 +32,126 @@ $("#add-train").on("click", function (event){
     // a place to store for retrieval 
     train = $("#train-input").val().trim();
     destination = $("#destination-input").val().trim();
-    firstTrainTime = $("#first-traintime").val().trim();
-    frequency = $("#frequency-min").val().trim();
+    firstTrainTime = $("#first-traintime-input").val().trim();
+    frequency = $("#frequency-min-input").val().trim();
+
+    console.log("DATA ADDED: ", {
+        train: train,
+        destination: destination,
+        firstTrainTime: firstTrainTime,
+        frequency: frequency,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+    });
 
     // pushing the info
     dataRef.ref().push({
-
         train: train,
         destination: destination,
-        firstTrainTime: "first train time",
+        firstTrainTime: firstTrainTime,
         frequency: frequency,
-        dateAdded: firebase.database.ServeValue.TIMESTAMP
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
 });
 
-dataRef.ref().on("child_added", function(childSnapshot){
-    // console.log(childSnapshot.val().train);
 
-    $("#list-group").append("<li id='list-group-item'>" + childSnapshot.val().train)+
+
+// This is populating the page with the data that was just submitted by the user
+dataRef.ref().on("child_added", function(childSnapshot){
+    console.log("SNAPSHOT: ", childSnapshot);
+     console.log(childSnapshot.val().train);
+     const nextConfig = getNextTrainTime(childSnapshot.val().firstTrainTime, childSnapshot.val().frequency);
+
+    $("#list-group").append(
+        "<ul id='list-group'><li id='list-itemt'>" + childSnapshot.val().train +
+        "<li id='list-itemd'>" + childSnapshot.val().destination +
+        "<li id='list-itemft'>" + childSnapshot.val().firstTrainTime +
+        "<li id='list-itemf'>" + childSnapshot.val().frequency + "</li>" +
+        "<li id='list-itemf'>" + nextConfig.nextTrainTime + "</li>"+
+        "<li id='list-itemf'>" + nextConfig.timeUntilNextTrain + "</li>"
+    );
+},
+function (errorObject){
+ console.log("Errors handled: " + errorObject.code);
+});
+
+
+function getNextTrainTime(initialTime, interval){
+    const currentTime = moment();
+    const dateString = moment().format("MM-DD-YYYY");
+    let nextTrainTime = moment(dateString + " "+ initialTime);
+
+    while(nextTrainTime <= currentTime) {
+        nextTrainTime = nextTrainTime.add(interval, 'minutes');
+    }
+
+    let timeUntilNextTrain= nextTrainTime.diff(currentTime, "minutes");
+
+    return {
+        nextTrainTime: nextTrainTime.format("HH:mm"),
+        timeUntilNextTrain
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* (FINAL VERSION)
+const response = { data: [
+    { initialTime: '14:00', interval: 15,  name: 'TeaRoomTrain', destination: 'TeaTown' },
+    { initialTime: '15:15', interval: 30,  name: 'CoffeeRoomTrain', destination: 'CoffeeTown' },
+] }; // i'm using snapshot instead
+const allTimes = response.data;
+
+for (let i = 0; i < allTimes.length; i++) {
+
+  // const { initialTime, interval } = allTimes[i];
+  const initialTimeAsString = allTimes[i].initialTime; // Storing the initialTime for the current object
+  const interval = allTimes[i].interval; // Storing the interval for the current object
+
+  const todayAsString = moment().format('MM-DD-YYYY');
+  const initialTrainTime = moment(todayAsString + ' ' + initialTimeAsString);
+  let nextTrainTime = initialTrainTime;
+  let currentTime = moment();
+
+  // Get the next time the train should be here
+  while (nextTrainTime < currentTime) {
+      nextTrainTime = nextTrainTime.add(interval, 'minutes');
+  }
+
+  // Get the difference between now and next train time in minutes
+  const timeTillNextTrain = nextTrainTime.diff(currentTime, 'minutes');
+  // Show next train time and difference in minutes to the user
+    console.log("---------------------------------------------------------");
+    console.log('*******Next Train Time', nextTrainTime.toDate());
+    console.log('********Difference In Time', timeTillNextTrain);
+
+}
+
+
+*/
