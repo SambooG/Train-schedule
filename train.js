@@ -93,9 +93,10 @@ function getNextTrainTime(initialTime, interval){
 
 }
 
-$("#td").on("click", function (remove){
-    ref.child(key).remove();
+$("td").on("click", function (remove){
+    dataRef.on('child_added',remove(childSnapShot))
 })
+
 
 
 
