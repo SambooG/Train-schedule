@@ -1,7 +1,7 @@
 th, td{
   /* display: inline; */
   
-  /* padding: 20px; */
+  padding: 20px;
 }
  /* td{
      display: inline-block;
@@ -47,17 +47,17 @@ th, td{
   }
 }
 
-.row{
+.border{
   border: black 2 px;
   padding: 5px;
 }
 
-#train-input [type=train-name] {
-  border: 3px solid rgb(221, 216, 222);
+/* #train-input [type=train-name] {
+  border: 3px solid rgb(66, 19, 75);
   transition: 0.5s;
-}
+} */
 #train-input[type=train-name]:focus {
-  border: 3px solid  rgb(234, 48, 250);
+  border: 3px solid  rgb(86, 26, 92);
 }
 form{
   background-color: rgb(189, 191, 194);
