@@ -61,13 +61,13 @@ dataRef.ref().on("child_added", function(childSnapshot){
      console.log(childSnapshot.val().train);
      const nextConfig = getNextTrainTime(childSnapshot.val().firstTrainTime, childSnapshot.val().frequency);
 
-    $("#list-group").append(
-        "<tbody class 'list' id='list-group'><td class 'list' id='list-itemt'>" + childSnapshot.val().train +
-        "<td classtdst' id='list-itemd'>" + childSnapshot.val().destination +
-        "<td class 'list' id='list-itemft'>" + childSnapshot.val().firstTrainTime +
-        "<td class 'list' id='list-itemf'>" + childSnapshot.val().frequency + "</td>" +
-        "<td class 'list' id='list-itemf'>" + nextConfig.nextTrainTime + "</td>"+
-        "<td class 'list' id='list-itemf'>" + nextConfig.timeUntilNextTrain + "</td>"
+    $("tbody").append(
+        "<tr><td class = 'list' id='list-itemt'>" + childSnapshot.val().train +
+        "<td class= 'list' id='list-itemd'>" + childSnapshot.val().destination +
+        "<td class ='list' id='list-itemft'>" + childSnapshot.val().firstTrainTime +
+        "<td class ='list' id='list-itemf'>" + childSnapshot.val().frequency + "</td>" +
+        "<td class ='list' id='list-itemf'>" + nextConfig.nextTrainTime + "</td>"+
+        "<td class ='list' id='list-itemf'>" + nextConfig.timeUntilNextTrain + "</td></tr>"
     );
 },
 function (errorObject){
@@ -93,6 +93,9 @@ function getNextTrainTime(initialTime, interval){
 
 }
 
+$("#td").on("click", function (remove){
+    ref.child(key).remove();
+})
 
 
 

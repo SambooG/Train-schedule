@@ -1,17 +1,65 @@
 th, td{
-  display: inline-block;
-  padding: 20px;
+  /* display: inline; */
+  
+  /* padding: 20px; */
 }
  /* td{
      display: inline-block;
      padding: 20px;
  } */
-body{
-    
+ th{
+   /* background-color: lightslategray; */
+   font-weight: bold;
+ }
+.body{
+    margin: 15px;
 }
 
 .display-4{
     font-weight: bolder;
     text-align: center;
+}
+
+.lead{
+  text-align:center;
+  animation-duration: 1000ms;
+  animation-name: tgle;
+  animation-iteration-count: infinite;
+}
+
+@keyframes tgle {
+  0% {
+    opacity: 0;
+  }
+
+  49.99% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+
+  99.99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.row{
+  border: black 2 px;
+  padding: 5px;
+}
+
+#train-input [type=train-name] {
+  border: 3px solid rgb(221, 216, 222);
+  transition: 0.5s;
+}
+#train-input[type=train-name]:focus {
+  border: 3px solid  rgb(234, 48, 250);
+}
+form{
+  background-color: rgb(189, 191, 194);
 }
 

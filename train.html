@@ -16,50 +16,60 @@
     <title>Choo choo!</title>
 </head>
 <body>
-        <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                  <h1 class="display-4">Trains a go-go</h1>
-                  <p class="lead">Chatanooga cHoO cHoO.</p>
-                </div>
-        </div>
-
+  <div class= "container">
+    <div class="jumbotron jumbotron-fluid">
+          <div class="container1">
+            <h1 class="display-4">Trains a go-go</h1>
+            <p class="lead">Chatanooga cHoO cHoO.</p>
+          </div>
+    </div>
+    <div class = "border">
+      <div class= "row">
+        <div class = "col-med-12">
         <!-- append train info here -->
-        <table class="list-group" id = "list-group">
+          <table class="list-group" id = "list-group">
             <thead>
-                <tr>
-                <th class = 'list' id="list-group-item">Train's here!</th>
-                <th class = list id="list-itemt">Train name</th>
-                <th class = list id="list-itemd">Destination</th>
-                <th class = list id="list-itemft">First train time</th>
-                <th class = list id="list-itemf">Frequency</th>
-                </tr>
-            </thead>
-
-              <form>
-                    <div class="form-group">
-                      <label for="train-input">Train</label>
-                      <input type="train-name" class="train-name" id="train-input" aria-describedby="trainHelp" placeholder="Enter train">
-                      
-                    </div>
-                    <div class="form-group">
-                      <label for="destination">Destination</label>
-                      <input type="destination" class="form-control" id="destination-input" placeholder="add destination">
-                    </div>
-                    <div class="form-group">
-                        <label for="first-traintime">First train time (HH:mm - military time)</label>
-                        <input type="first-train-time" class="form-control" id="first-traintime-input" placeholder="first train time">
-                    </div>
-                    <div class="form-group">
-                        <label for="frequency-min">Frequency (min)</label>
-                        <input type="frequency" class="form-control" id="frequency-min-input" placeholder="frequency">
-                    </div>
-                
-                    <button type="submit" class="btn btn-primary" id="add-train">Submit</button>
-                  </form>
+              <tr>
+              <th class = 'col' id="list-group-item">Train's here!</th>
+              <th class = 'col' id="list-itemt">Train name</th>
+              <th class = 'col' id="list-itemd">Destination</th>
+              <th class = 'col' id="list-itemft">First train time</th>
+              <th class = 'col' id="list-itemf">Frequency</th>
+              </tr>
+            </thead> 
+            <tbody>
+            </tbody>  
+          </table>     
+        </div>
+      </div>
+    </div>
+    <hr>
+          <form>
+            <div class="form-group">
+              <label for="train-input">Train</label>
+              <input type="train-name" class="train-name" id="train-input" aria-describedby="trainHelp" placeholder="Enter train">
+            
+            </div>
+              <div class="form-group">
+              <label for="destination">Destination</label>
+              <input type="destination" class="form-control" id="destination-input" placeholder="add destination">
+            </div>
+            <div class="form-group">
+              <label for="first-traintime">First train time (HH:mm - military time)</label>
+              <input type="first-train-time" class="form-control" id="first-traintime-input" placeholder="first train time">
+              </div>
+            <div class="form-group">
+              <label for="frequency-min">Frequency (min)</label>
+              <input type="frequency" class="form-control" id="frequency-min-input" placeholder="frequency">
+          </div>
+      
+          <button type="submit" class="btn btn-primary" id="add-train">Submit</button>
+        </form>
 
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     
 
         <script src="train.js"></script>
+  </div>
 </body>
 </html>
