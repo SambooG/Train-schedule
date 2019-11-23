@@ -92,10 +92,19 @@ function getNextTrainTime(initialTime, interval){
     }
 
 }
-
-$("td").on("click", function (remove){
-    dataRef.on('child_added',remove(childSnapShot))
-})
+//attempting to remove trains
+// $("td").on("click", function (remove){
+//     var ref = firebase.database().ref(train, destination,firstTrainTime, frequency);
+    
+//     ref.SnapShot(value)
+//         .then(remove(){
+//     "<tr>data-key'>" + Snapshot.val().train +
+//         "<tr>value'>" + Snapshot.val().destination +
+//         "<td class ='list' id='list-itemft'>" + Snapshot.val().firstTrainTime +
+//         "<td class ='list' id='list-itemf'>" + Snapshot.val().frequency + "</td>"
+//         $(this).attr(value)
+//     })
+// });
 
 
 
