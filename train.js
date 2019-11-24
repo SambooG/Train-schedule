@@ -62,12 +62,12 @@ dataRef.ref().on("child_added", function(childSnapshot){
      const nextConfig = getNextTrainTime(childSnapshot.val().firstTrainTime, childSnapshot.val().frequency);
 
     $("tbody").append(
-        "<tr><td class = 'list' id='list-itemt'>" + childSnapshot.val().train +
-        "<td class= 'list' id='list-itemd'>" + childSnapshot.val().destination +
-        "<td class ='list' id='list-itemft'>" + childSnapshot.val().firstTrainTime +
-        "<td class ='list' id='list-itemf'>" + childSnapshot.val().frequency + "</td>" +
-        "<td class ='list' id='list-itemf'>" + nextConfig.nextTrainTime + "</td>"+
-        "<td class ='list' id='list-itemf'>" + nextConfig.timeUntilNextTrain + "</td></tr>"
+        "<tr><td id='list-itemt'>" + childSnapshot.val().train + "</td>"+
+        "<td id='list-itemd'>" + childSnapshot.val().destination + "</td>"+
+        "<td id='list-itemft'>" + childSnapshot.val().firstTrainTime +"</td>"+
+        "<td id='list-itemf'>" + childSnapshot.val().frequency + "</td>" +
+        "<td id='list-itemntt'>" + nextConfig.nextTrainTime + "</td>"+
+        "<td id='list-itemmr'>" + nextConfig.timeUntilNextTrain + "</td></tr>"
     );
 },
 function (errorObject){
